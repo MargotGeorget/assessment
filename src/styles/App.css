@@ -86,7 +86,7 @@ h1 {
 }
 
 p {
-  margin: 0 0 1rem 0;
+  margin: 1rem 0 1rem 0;
   font-size: 1.5rem;
   color: #333;
 }
@@ -98,7 +98,7 @@ img {
   border-radius: 50%;
 }
 .authorName {
-    line-height:70px;
+    line-height:85px;
 }
 /*
 .postRow {
@@ -111,13 +111,18 @@ img {
 */
 
 .badge{
-  background: #fff;
-  color: #424242;
+  background: #006faf;
+  color: #fff;
   min-width: 50px;
-  padding-right: 20px;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-top: 2px;
+  padding-bottom: 2px;
   height: 35px;
   border-radius: 30px;
-  display: flex;
+  display: inline;
   align-items: center;
   justify-content: flex-start;
+  text-align: center;
+  margin-left: 2px;
 }

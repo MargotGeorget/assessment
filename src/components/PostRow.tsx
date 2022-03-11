@@ -23,10 +23,12 @@ export const PostRow = ({ id, title, publishDate, author, summary, categories }:
                 <div className="postRow">
                     <h3>{publishDate}</h3>
                     <h1>{title}</h1>
+                    <span>
                     {
                       categories.map(category => (
                         <span className="badge">{category.name}</span>
                     ))}
+                    </span>
                     <p>{summary}</p>
                     <AuthorRow name={author.name} avatar={author.avatar}></AuthorRow>
                 </div> 
