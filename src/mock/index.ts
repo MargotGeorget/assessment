@@ -1,5 +1,5 @@
 import { createServer } from 'miragejs';
-import { CategoriesSelector } from '../components/Select';
+import Category from '../models/Category';
 
 import data from './data.json';
 
@@ -12,14 +12,24 @@ createServer({
     });
 
     this.get('/categories', () => {
-      var categories: {id: string, name: string}[] = []
+      var categoriesJSON: { categories :{id: string, name: string}[]} = { categories: []}
       data.posts.map( post => 
         post.categories.map( category => {
-          if (categories.indexOf(category) == -1){
-            categories.push(category)
+          if ( contain(categoriesJSON.categories, category) === false ){
+            categoriesJSON.categories.push(category)
           }
         }))
-      return categories;
+      return categoriesJSON;
     });
   },
 });
+
+function contain(categories: {id: string, name: string}[], category: {id: string, name: string}): boolean {
+  var contain = false;
+  categories.map( cat => {
+    if (cat.name == category.name) {
+        contain = true;
+    }
+  });
+  return contain; 
+}

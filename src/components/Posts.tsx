@@ -8,7 +8,7 @@ const Posts: React.FC<{}> = () => {
   console.log(service);
 
   return (
-    <div>
+    <div className="wrapper">
       {service.status === 'loading' && <div>Loading...</div>}
       {service.status === 'loaded' &&
         service.payload.posts.map(post => (

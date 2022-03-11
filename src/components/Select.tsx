@@ -1,6 +1,5 @@
 import React, { Component, FC } from 'react'
-import Select from 'react-select'
-import Category from '../models/Category';
+import useCategoriesService from "../models/Categories";
 
 interface PropsSelector {
     categories: String[],
@@ -8,17 +7,28 @@ interface PropsSelector {
 }
 
 export const CategoriesSelector: React.FC<PropsSelector> = (props) => {
-    const categories = props.categories;
+    const service = useCategoriesService();
         
     return (
-        <select
-        multiple={true}
-        onChange={props.onCategoriesChange}
-          >
-        <option value="React">React</option>
-        <option value="Angular">Angular</option>
-        <option value="Vue">Vue</option>
-      </select>
+        <div>
+            {service.status === 'loading' && <div>Loading...</div>}
+            {service.status === 'loaded' &&
+                    <select
+                        multiple={true}
+                        onChange={props.onCategoriesChange}
+                    >
+                    <option value="">Test</option>
+                    {service.payload.categories.map(category => (
+
+                    <option key={category.id} value={category.name}>{category.name}</option>
+                        ))}
+                  </select>
+            }
+            {service.status === 'error' && (
+                <div>Error, the backend moved to the dark side.</div>
+            )}
+        </div>
+        
     );
   }
 
