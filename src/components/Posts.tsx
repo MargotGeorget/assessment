@@ -10,7 +10,7 @@ const Posts: React.FC<{}> = () => {
     <div>
       {service.status === 'loading' && <div>Loading...</div>}
       {service.status === 'loaded' &&
-        service.payload.results.map(post => (
+        service.payload.posts.map(post => (
           <div key={post.id}>{post.title}</div>
         ))}
       {service.status === 'error' && (

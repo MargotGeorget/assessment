@@ -3,7 +3,7 @@ import { Service } from './Service';
 import { Post } from './Post';
 
 export interface Posts {
-  results: Post[];
+  posts: Post[];
 }
 
 // Custom hooks 
