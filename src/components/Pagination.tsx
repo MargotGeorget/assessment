@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import "../styles/pagination.css"
 
 
 interface PaginationProps {
@@ -69,8 +70,15 @@ export const Pagination: React.FunctionComponent<PaginationProps> = (props) => {
 				type={"button"}
 				aria-label={"Previous"}
 				disabled={props.currentPage <= 1}
-			>
-				Previous
+			><i className="icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M17 5.88L15.29 4 8 12l7.29 8L17 18.12 11.44 12z"
+                    fillRule="evenodd"
+                />
+            </svg>
+        </i>
+				
 			</button>
 			<span className="text pageText">Page:</span>
 			<input
@@ -86,8 +94,14 @@ export const Pagination: React.FunctionComponent<PaginationProps> = (props) => {
 				type={"button"}
 				aria-label={"Next"}
 				disabled={props.currentPage >= totalPages}
-			>
-				Next
+			><i className="icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M8 5.88L9.71 4 17 12l-7.29 8L8 18.12 13.56 12z"
+                    fillRule="evenodd"
+                />
+            </svg>
+        </i>
 			</button>
 		</form>
 	);
