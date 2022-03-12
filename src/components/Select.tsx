@@ -5,31 +5,11 @@ import useCategoriesService from "../models/Categories";
 
 interface PropsSelector {
     categories: String[],
-    setCategories: React.Dispatch<React.SetStateAction<String[]>>
+    selectCategory: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 export const CategoriesSelector: React.FC<PropsSelector> = (props) => {
     const service = useCategoriesService();
-
-    // Handle the onChange event of the checkbox
-  const selectCategory = (event: React.ChangeEvent<HTMLInputElement>) => {
-    var newCategories = props.categories
-    const selectedCategory = event.target.value;
-
-    // Check if "ids" contains "selectedIds"
-    // If true, this checkbox is already checked
-    // Otherwise, it is not selected yet
-    if (props.categories.includes(selectedCategory)) {
-        newCategories = newCategories.filter((category) => category !== selectedCategory);
-      props.setCategories(newCategories);
-    } else {
-        newCategories = newCategories.filter((category) => category !== selectedCategory);
-      newCategories.push(selectedCategory);
-      props.setCategories(newCategories);
-    }
-    console.log(newCategories,props.categories);
-  };
-
 
     return (
         <div>
@@ -41,7 +21,7 @@ export const CategoriesSelector: React.FC<PropsSelector> = (props) => {
                         <input
                             type="checkbox"
                             value={category.name}
-                            onChange={selectCategory}
+                            onChange={props.selectCategory}
                             checked={props.categories.includes(category.name) ? true : false}
                             key={category.id}
                         />

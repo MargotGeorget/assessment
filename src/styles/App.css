@@ -6,9 +6,9 @@ html {
 }
 
 body {
-  background: #006faf;
-  background: -webkit-linear-gradient(to right, #2b32b2, #24eba3);
-  background: linear-gradient(to right,#2b32b2,#24eba3);
+  background: lightgrey;
+  /*background: -webkit-linear-gradient(to right, #2b32b2, #24eba3);
+  background: linear-gradient(to right,#2b32b2,#24eba3);*/
   /*margin-top: 10vh;*/
   /*background: #e3e3e3;*/
   /*display: flex;*/
@@ -65,6 +65,7 @@ img {
 }
 .authorName {
     line-height:85px;
+    font-style: italic;
 }
 
 .badge{
