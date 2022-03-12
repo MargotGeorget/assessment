@@ -74,7 +74,6 @@ function displayDate( date: string): string {
 
 export const PostRow = ({ id, title, publishDate, author, summary, categories }: Post) => {
     return (
-      <div className="wrapper">
             <div className="blog_post">
                 <div className="postRow">
                     <h3>{displayDate(publishDate)}</h3>
@@ -89,6 +88,5 @@ export const PostRow = ({ id, title, publishDate, author, summary, categories }:
                     <AuthorRow name={author.name} avatar={author.avatar}></AuthorRow>
                 </div> 
             </div> 
-          </div>
     );
   }

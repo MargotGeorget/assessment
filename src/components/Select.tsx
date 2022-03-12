@@ -1,5 +1,6 @@
 import React, { Component, FC, useState } from 'react'
 import useCategoriesService from "../models/Categories";
+
 //import "../styles/checkbox.css"
 
 interface PropsSelector {
@@ -9,7 +10,6 @@ interface PropsSelector {
 
 export const CategoriesSelector: React.FC<PropsSelector> = (props) => {
     const service = useCategoriesService();
-    const [categoriesSelected, setCategegoriesSelected] = useState<String[]>([])
 
     // Handle the onChange event of the checkbox
   const selectCategory = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -20,14 +20,14 @@ export const CategoriesSelector: React.FC<PropsSelector> = (props) => {
     // If true, this checkbox is already checked
     // Otherwise, it is not selected yet
     if (props.categories.includes(selectedCategory)) {
-      newCategories = newCategories.filter((category) => category !== selectedCategory);
+        newCategories = newCategories.filter((category) => category !== selectedCategory);
       props.setCategories(newCategories);
-      setCategegoriesSelected(newCategories);
     } else {
+        newCategories = newCategories.filter((category) => category !== selectedCategory);
       newCategories.push(selectedCategory);
       props.setCategories(newCategories);
-      setCategegoriesSelected(newCategories);
     }
+    console.log(newCategories,props.categories);
   };
 
 
@@ -42,9 +42,10 @@ export const CategoriesSelector: React.FC<PropsSelector> = (props) => {
                             type="checkbox"
                             value={category.name}
                             onChange={selectCategory}
-                            checked={categoriesSelected.includes(category.name) ? true : false}
+                            checked={props.categories.includes(category.name) ? true : false}
                             key={category.id}
                         />
+                        {console.log("dans html"+ props.categories)}
                         <span className="check"></span>
                         <label>{category.name}</label>
                         </div>))}

@@ -11,16 +11,17 @@ export const App: React.FunctionComponent = () => {
   const [categories, setCategories] = useState<String[]>([])
   const [posts, setPosts] = useState<Post[]>([])
   const [currentPage, setCurrentPage] = React.useState(1);
+  const nbElementsInPage = 5;
 
   const service = usePostService();
 
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
     if (service.status === "loaded") {
-      if (pageNumber * 10 + 10 < service.payload.posts.length) {
-        setPosts(service.payload.posts.slice((pageNumber - 1) * 10, (pageNumber - 1) * 10 + 10))
+      if ((pageNumber - 1) * nbElementsInPage + nbElementsInPage < service.payload.posts.length) {
+        setPosts(service.payload.posts.slice((pageNumber - 1) * nbElementsInPage, (pageNumber - 1) * nbElementsInPage + nbElementsInPage))
       } else {
-        setPosts(service.payload.posts.slice((pageNumber - 1) * 10))
+        setPosts(service.payload.posts.slice((pageNumber - 1) * nbElementsInPage))
       }
     }
   };
@@ -34,13 +35,13 @@ export const App: React.FunctionComponent = () => {
           {categories.map(category =>
             <p key={categories.indexOf(category)}>{category}</p>
           )}
-          {posts.length == 0 && setPosts(service.payload.posts.slice(0, 10))}
+          {posts.length == 0 && setPosts(service.payload.posts.slice(0, 5))}
           <Posts posts={posts}></Posts>
           <div>
             <Pagination
               currentPage={currentPage}
               totalItems={service.payload.posts.length}
-              pageSize={10}
+              pageSize={nbElementsInPage}
               handlePageChange={handlePageChange}
             />
           </div>
