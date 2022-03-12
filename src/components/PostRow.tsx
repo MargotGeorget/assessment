@@ -15,18 +15,74 @@ function AuthorRow({ name, avatar }: Author) {
       </div>
     );
   }
+  
+function displayDate( date: string): string {
+  let result = ""
+  var splitted = date.split("-", 2); 
+  switch (splitted[1]) {
+    case '01': {
+      result = "January "
+      break;
+    }
+    case '02': {
+      result = "February "
+      break;
+    }
+    case '03': {
+      result = "March "
+      break;
+    }
+    case '04': { 
+      result = "April "
+      break;
+    }
+    case '05': {
+      result = "May "
+      break;
+    }
+    case '06': {
+      result = "June "
+      break;
+    }
+    case '07': {
+      result = "July "
+      break;
+    }
+    case '08': {
+      result = "August "
+      break;
+    }
+    case '09': {
+      result = "September "
+      break;
+    }
+    case '10': {
+      result = "October "
+      break;
+    }
+    case '11': {
+      result = "November "
+      break;
+    }
+    case '12': {
+      result = "December "
+      break;
+    }
+  }
+  return result.concat(splitted[0])
+}
 
 export const PostRow = ({ id, title, publishDate, author, summary, categories }: Post) => {
     return (
       <div className="wrapper">
             <div className="blog_post">
                 <div className="postRow">
-                    <h3>{publishDate}</h3>
+                    <h3>{displayDate(publishDate)}</h3>
                     <h1>{title}</h1>
                     <span>
                     {
                       categories.map(category => (
-                        <span className="badge">{category.name}</span>
+                        <span className="badge" key={category.id}>{category.name}</span>
                     ))}
                     </span>
                     <p>{summary}</p>

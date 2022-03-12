@@ -13,7 +13,8 @@ const Posts: React.FC<{posts: Post[]}> = (props) => {
           publishDate={post.publishDate}
           author={post.author}
           summary={post.summary}
-          categories={post.categories}/> 
+          categories={post.categories}
+          key={post.id}/> 
         ))}
     </div>
   );
