@@ -1,5 +1,6 @@
 import React, { Component, FC, useState } from 'react'
 import useCategoriesService from "../models/Categories";
+import '../styles/checkbox.css'
 
 //import "../styles/checkbox.css"
 
@@ -17,7 +18,8 @@ export const CategoriesSelector: React.FC<PropsSelector> = (props) => {
             {service.status === 'loaded' &&
                 <div>
                     {service.payload.categories.map(category => (
-                         <div className="box" key={category.id}>
+
+                        <label className="container" key={category.id}>{category.name}
                         <input
                             type="checkbox"
                             value={category.name}
@@ -25,10 +27,8 @@ export const CategoriesSelector: React.FC<PropsSelector> = (props) => {
                             checked={props.categories.includes(category.name) ? true : false}
                             key={category.id}
                         />
-                        {console.log("dans html"+ props.categories)}
-                        <span className="check"></span>
-                        <label>{category.name}</label>
-                        </div>))}
+                        <span className="checkmark"></span>
+                        </label>))}
 
                 </div>
             }

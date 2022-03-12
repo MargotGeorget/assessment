@@ -80,9 +80,6 @@ export const App: React.FunctionComponent = () => {
       {service.status === 'loaded' &&
         <div>
           <CategoriesSelector categories={categories} selectCategory={selectCategory}></CategoriesSelector>
-          {categories.map(category =>
-            <p key={categories.indexOf(category)}>{category}</p>
-          )}
           {postsDisplayed.length == 0 && setPostsDisplayed(service.payload.posts.slice(0, 5))}
           {filteredPosts.length == 0 && setFilteredPosts(service.payload.posts)}
           <Posts posts={postsDisplayed}></Posts>
