@@ -1,5 +1,4 @@
 import { createServer } from 'miragejs';
-import Category from '../models/Category';
 
 import data from './data.json';
 
@@ -11,10 +10,11 @@ createServer({
       return data;
     });
 
+    // Creation of a route in the API to retrieve the list of the different categories
     this.get('/categories', () => {
       var categoriesJSON: { categories :{id: string, name: string}[]} = { categories: []}
       data.posts.map( post => 
-        post.categories.map( category => {
+        post.categories.forEach( category => {
           if ( contain(categoriesJSON.categories, category) === false ){
             categoriesJSON.categories.push(category)
           }
@@ -26,8 +26,8 @@ createServer({
 
 function contain(categories: {id: string, name: string}[], category: {id: string, name: string}): boolean {
   var contain = false;
-  categories.map( cat => {
-    if (cat.name == category.name) {
+  categories.forEach( cat => {
+    if (cat.name === category.name) {
         contain = true;
     }
   });

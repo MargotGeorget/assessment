@@ -2,12 +2,13 @@ import { useEffect, useState } from 'react';
 import { Service } from './Service';
 import { Category } from './Category';
 
+// Interfaces to store categories retrieved from the API 
 export interface Categories {
     categories: Category[];
 }
 
 // Custom hooks 
-// pour reutiliser des actions effectuees dans les hooks par defaut dans plusieurs fonctions differentes 
+// Manages the fetch of data from the API
 const useCategoriesService = () => {
   const [result, setResult] = useState<Service<Categories>>({
     status: 'loading'

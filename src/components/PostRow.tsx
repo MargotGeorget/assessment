@@ -2,23 +2,24 @@ import { Post } from "../models/Post";
 import Author from "../models/Author";
 import '../styles/App.css'
 
-   
+
 function AuthorRow({ name, avatar }: Author) {
-    return (
-      <div>
-        <p className="avatar">
-            <img src={avatar} alt="Avatar" />
-        </p>
-        <p className="authorName">
-            {name}
-        </p>
-      </div>
-    );
-  }
-  
-function displayDate( date: string): string {
+  return (
+    <div>
+      <p className="avatar">
+        <img src={avatar} alt="Avatar" />
+      </p>
+      <p className="authorName">
+        {name}
+      </p>
+    </div>
+  );
+}
+
+// Convert the date for a better display 
+function displayDate(date: string): string {
   let result = ""
-  var splitted = date.split("-", 2); 
+  var splitted = date.split("-", 2);
   switch (splitted[1]) {
     case '01': {
       result = "January "
@@ -32,7 +33,7 @@ function displayDate( date: string): string {
       result = "March "
       break;
     }
-    case '04': { 
+    case '04': {
       result = "April "
       break;
     }
@@ -73,19 +74,19 @@ function displayDate( date: string): string {
 }
 
 export const PostRow = ({ id, title, publishDate, author, summary, categories }: Post) => {
-    return (
-            <div className="blog_post">
-                    <h3>{displayDate(publishDate)}</h3>
-                    <h2>{title}</h2>
-                    <span>
-                    {
-                      categories.map(category => (
-                        <span className="badge" key={category.id}>{category.name}</span>
-                    ))}
-                    </span>
-                    <p>{summary}</p>
-                    <AuthorRow name={author.name} avatar={author.avatar}></AuthorRow>
-                
-            </div> 
-    );
-  }
+  return (
+    <div className="blog_post">
+      <h3>{displayDate(publishDate)}</h3>
+      <h2>{title}</h2>
+      <span>
+        {
+          categories.map(category => (
+            <span className="badge" key={category.id}>{category.name}</span>
+          ))}
+      </span>
+      <p>{summary}</p>
+      <AuthorRow name={author.name} avatar={author.avatar}></AuthorRow>
+
+    </div>
+  );
+}

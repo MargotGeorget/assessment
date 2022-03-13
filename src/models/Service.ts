@@ -1,3 +1,5 @@
+// Interfaces to facilitate API data recovery management
+
 interface ServiceInit {
   // Define the state of the web service before any action 
   status: 'init';

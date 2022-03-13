@@ -1,9 +1,8 @@
-import React, { useRef } from "react";
+import React from "react";
 import "../styles/pagination.css"
 
 
 interface PaginationProps {
-	className?: string;
 	totalItems: number;
 	pageSize: number;
 	currentPage: number;
@@ -12,7 +11,6 @@ interface PaginationProps {
 
 export const Pagination: React.FunctionComponent<PaginationProps> = (props) => {
 	const { totalItems, pageSize } = props;
-	const pageInput = React.useRef<HTMLInputElement>();
 	const totalPages = Math.ceil(totalItems / pageSize);
 	const [inputVal, setIntputVal] = React.useState(props.currentPage || "1");
 
@@ -58,8 +56,6 @@ export const Pagination: React.FunctionComponent<PaginationProps> = (props) => {
 		props.handlePageChange(newVal);
 		setIntputVal(newVal);
 
-		// Blur input on submit
-		//pageInput.current!.blur();
 	};
 
 	return (

@@ -2,12 +2,13 @@ import { useEffect, useState } from 'react';
 import { Service } from './Service';
 import { Post } from './Post';
 
+// Interfaces to store posts retrieved from the API 
 export interface Posts {
   posts: Post[];
 }
 
 // Custom hooks 
-// pour reutiliser des actions effectuees dans les hooks par defaut dans plusieurs fonctions differentes 
+// Manages the fetch of data from the API
 const usePostService = () => {
   const [result, setResult] = useState<Service<Posts>>({
     status: 'loading'
