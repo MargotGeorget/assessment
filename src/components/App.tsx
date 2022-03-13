@@ -34,8 +34,8 @@ export const App: React.FunctionComponent = () => {
   // Manages the modification of the list of posts to be displayed following a 
   // modification of the selected categories or the current page
   const updateDisplayedPosts = (newPageNumber: number, newPostsFiltered: Post[]) => {
-    if (filteredPosts.length > 0) {
-      if ((newPageNumber - 1) * nbElementsInPage + nbElementsInPage < filteredPosts.length) {
+    if (newPostsFiltered.length > 0) {
+      if ((newPageNumber - 1) * nbElementsInPage + nbElementsInPage < newPostsFiltered.length) {
         setDisplayedPosts(newPostsFiltered.slice((newPageNumber - 1) * nbElementsInPage, (newPageNumber - 1) * nbElementsInPage + nbElementsInPage));
       } else {
         setDisplayedPosts(newPostsFiltered.slice((newPageNumber - 1) * nbElementsInPage));
@@ -45,7 +45,7 @@ export const App: React.FunctionComponent = () => {
   }
 
   // Handle the onChange event of the checkbox
-  const selectCategory = async (event: React.ChangeEvent<HTMLInputElement>) => {
+  const selectCategory = (event: React.ChangeEvent<HTMLInputElement>) => {
     var newCategories = categories
     const selectedCategory = event.target.value;
 
@@ -54,11 +54,11 @@ export const App: React.FunctionComponent = () => {
     // Otherwise, it is not selected yet
     if (categories.includes(selectedCategory)) {
       newCategories = newCategories.filter((category) => category !== selectedCategory);
-      await setCategories(newCategories);
+      setCategories(newCategories);
     } else {
       newCategories = newCategories.filter((category) => category !== selectedCategory);
       newCategories.push(selectedCategory);
-      await setCategories(newCategories);
+      setCategories(newCategories);
     }
     // Filter posts with the new list of selected categories  
     filteringPosts(newCategories);
