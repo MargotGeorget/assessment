@@ -76,7 +76,7 @@ export const PostRow = ({ id, title, publishDate, author, summary, categories }:
     return (
             <div className="blog_post">
                     <h3>{displayDate(publishDate)}</h3>
-                    <h1>{title}</h1>
+                    <h2>{title}</h2>
                     <span>
                     {
                       categories.map(category => (

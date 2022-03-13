@@ -75,7 +75,9 @@ export const App: React.FunctionComponent = () => {
 
   return (
     <div>
-      <h1 className="title">Assessment Lizard global</h1>
+      <h1 className="greentitle"> Lizard global</h1>
+      <h1 className="graytitle">Assessment</h1> 
+      <h1 className="name">by Margot Georget</h1>
       {service.status === 'loading' && <div>Loading...</div>}
       {service.status === 'loaded' &&
         <div>

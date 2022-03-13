@@ -1,75 +1,86 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap");
-
-html {
-  font-family: 'Roboto', sans-serif;
-  font-size: 12px;
-}
+@import url('http://fonts.cdnfonts.com/css/gilroy-bold');
 
 body {
-  background: lightgrey;
-  /*background: -webkit-linear-gradient(to right, #2b32b2, #24eba3);
-  background: linear-gradient(to right,#2b32b2,#24eba3);*/
-  /*margin-top: 10vh;*/
-  /*background: #e3e3e3;*/
-  /*display: flex;*/
-  /*font-weight: bold;*/
-  /*justify-content: space-between;*/
-  /*align-items: center;*/
-  /*min-height: 50vh;*/
-  /*flex-direction: column;*/
+  background: white;
 }
 
-/*
-.wrapper {
-  height: 100%;
-  width: 100%;
-  height: 100vh;
-}
-*/
 .blog_post {
   margin: 20px;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  padding: 2rem 2rem 2rem 2rem;
+  padding: 2rem 2rem 1rem 2rem;
   background: #fff;
   max-width: 900px;
   border-radius: 10px;
   box-shadow: 1px 1px 2rem rgba(0, 0, 0, 0.3);
 }
 
+h1, h2, h3 {
+  font-family: Gilroy !important;
+}
+
+h2 {
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
 h3 {
   margin: 0 0 0.5rem 0;
-  color: #999;
+  color: #24eba3;
   font-size: 1.25rem;
 }
 
 h1 {
-  margin: 0 0 1rem 0;
-  font-size: 2.5rem;
+  margin: 0;
   letter-spacing: 0.5px;
-  color: #333;
+  text-align: center;
+}
+
+.greentitle {
+  margin: 1rem 0 0 0;
+  font-size: 4.5rem !important;
+  color: #24eba3;
+}
+
+.graytitle {
+  color: #868e96;
+  font-size: 3.5rem !important;
+  font-style: italic;
+}
+
+.name {
+  text-align: end;
+  font-style: italic;
+  font-size: 1.5rem;
+  color: #868e96;
 }
 
 p {
   margin: 1rem 0 1rem 0;
   font-size: 1.5rem;
-  color: #333;
+  font-family: Muli;
+  color: #868e96;
 }
 
 .avatar {
     float:left;
+    margin: 0;
 }
+
 img {
   border-radius: 50%;
 }
+
 .authorName {
-    line-height:85px;
+    line-height:75px;
     font-style: italic;
+    margin: 0;
 }
 
 .badge{
-  background: #006faf;
+  background: #5c5aea;
   color: #fff;
   min-width: 50px;
   padding-right: 10px;

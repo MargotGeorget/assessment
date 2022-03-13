@@ -16,7 +16,8 @@ export const CategoriesSelector: React.FC<PropsSelector> = (props) => {
         <div>
             {service.status === 'loading' && <div>Loading...</div>}
             {service.status === 'loaded' &&
-                <div>
+                <div className='selector'>
+                    <h4>Filter posts by categories</h4>
                     {service.payload.categories.map(category => (
 
                         <label className="container" key={category.id}>{category.name}
